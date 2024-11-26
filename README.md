@@ -22,7 +22,7 @@ Follow the steps below to set up the project locally.
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/equalearn.git
+git clone https://github.com/Lenox001/EqualLearn.git
 cd equalearn
 ```
 
