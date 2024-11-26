@@ -1,6 +1,6 @@
 .animated-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2rem; /* Larger font size */
+  font-weight: bold; /* Bold text */
   background: linear-gradient(
     270deg,
     green,
