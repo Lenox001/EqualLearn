@@ -1,0 +1,8 @@
+Django
+djangorestframework
+django-cors-headers
+Pillow
+django-environ
+django-crispy-forms
+psycopg2
+django-debug-toolbar
