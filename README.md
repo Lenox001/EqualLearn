@@ -129,7 +129,7 @@ Usage
 
 Once the backend and frontend are running:
 
-- **Frontend**: You can view and interact with the application on `http://localhost:3000/` (React app).
+- **Frontend**: You can view and interact with the application on `http://localhost:5173/` (React app).
 - **Backend**: You can access the API on `http://localhost:8000/` (Django API).
 
 You can log into the Django admin panel using the superuser credentials you created earlier by going to `http://localhost:8000/admin`.
