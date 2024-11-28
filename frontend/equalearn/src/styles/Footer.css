@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* General footer styling */
+.footer {
+  background: linear-gradient(180deg, #1c1c1c, #000000); /* Gradient background */
+  padding: 0.5rem 0; /* Further reduced padding */
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: #f8f9fa; /* Light text */
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Footer text and heading */
+.equa-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem; /* Smaller font size */
+  font-weight: 600;
+  color: #f8f9fa;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Reduced text shadow */
+  margin-bottom: 0.5rem; /* Reduced bottom margin */
+}
+
+/* Footer social icons */
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin: 0 8px; /* Reduced spacing between icons */
+  font-size: 1.3rem; /* Smaller icon size */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Slightly smaller scale on hover */
+  color: #00aced;
+}
+
+/* Footer text */
+.footer-text {
+  font-size: 0.8rem; /* Smaller font size */
+  font-weight: 300;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  color: #ccc; /* Slightly lighter text for footer */
+}
+

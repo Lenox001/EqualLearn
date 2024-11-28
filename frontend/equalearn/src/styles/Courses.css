@@ -1,0 +1,96 @@
+/* Courses section header */
+/* List of courses container */
+.courses-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Individual Course Card */
+.course {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Hover effect for course card */
+.course:hover {
+  transform: translateY(-8px); /* Lift effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+  background-color: #f9f9f9;
+}
+
+/* Course Image Styling */
+.course img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for course image */
+.course:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Course Title */
+.course h3 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Course Description */
+.course p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Price Styling */
+.course .price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #27ae60; /* Green color for pricing */
+  margin-top: 1rem;
+}
+
+/* No Courses Available Text */
+.no-courses {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-top: 2rem;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .courses-list {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .course h3 {
+    font-size: 1.5rem;
+  }
+
+  .course p {
+    font-size: 0.9rem;
+  }
+}

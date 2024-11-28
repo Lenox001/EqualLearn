@@ -1,0 +1,159 @@
+/* General home page styling */
+.home-page {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #564b4b;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+  width: 70%;
+}
+
+/* Home header styling with animation and gradient text */
+.home-header h1 {
+  font-size: 3.5em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6f61, #6a5acd, #3cb371, #ff6347); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  animation: fadeInText 3s ease-in-out infinite;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.home-header p {
+  font-size: 1.3em;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  animation: slideIn 2s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Home description section with animated text */
+.home-description {
+  margin-top: 50px;
+}
+
+.home-description h2 {
+  font-size: 2.5em;
+  color: #c8d5e2;
+  margin-bottom: 20px;
+  animation: fadeInText 3s ease-in-out infinite;
+}
+
+.home-description p {
+  font-size: 1.2em;
+  color: #7f8c8d;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  animation: slideIn 2s ease-out;
+}
+
+/* Explore Courses button with hover effect */
+.btn-hovered {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease-in-out;
+  animation: buttonHover 1s infinite alternate;
+}
+
+@keyframes buttonHover {
+  0% {
+    background-color: #3498db;
+  }
+  100% {
+    background-color: #2980b9;
+  }
+}
+
+.btn-hovered:hover {
+  background-color: #2980b9;
+}
+
+/* Statistics section with animated stats */
+.home-stats {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat-item {
+  background-color: #052128;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 25%;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeInUp 2s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-item h3 {
+  font-size: 4em;
+  color: #adbac3;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-item p {
+  font-size: 1.2em;
+  color: #7f8c8d;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .home-description p {
+    font-size: 1.1em;
+  }
+
+  .home-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-item {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
