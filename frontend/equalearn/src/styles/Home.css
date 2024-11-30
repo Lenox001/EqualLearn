@@ -2,18 +2,54 @@
 .home-page {
   padding: 50px 20px;
   text-align: center;
-  background-color: #564b4b;
+  background: linear-gradient(135deg, #342727, #3b4371, #2b5876);
   font-family: 'Roboto', sans-serif;
   border-radius: 2rem;
   margin-bottom: 0.5rem;
-  width: 70%;
+  width: 90%;
+  position: relative;
+  overflow: hidden; /* Ensures floating objects don't affect layout */
 }
 
-/* Home header styling with animation and gradient text */
-.home-header h1 {
+/* Floating objects */
+.home-page::before,
+.home-page::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: float 6s ease-in-out infinite;
+}
+
+.home-page::before {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.home-page::after {
+  bottom: 15%;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+/* Floating object animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Home header styling */
+.home-header-title {
   font-size: 3.5em;
   font-weight: bold;
-  background: linear-gradient(45deg, #ff6f61, #6a5acd, #3cb371, #ff6347); 
+  background: linear-gradient(45deg, #ff6f61, #6a5acd, #3cb371, #ff6347);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -21,19 +57,7 @@
   animation: fadeInText 3s ease-in-out infinite;
 }
 
-@keyframes fadeInText {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.home-header p {
+.home-header-subtitle {
   font-size: 1.3em;
   color: #7f8c8d;
   margin-bottom: 30px;
@@ -41,30 +65,15 @@
   animation: slideIn 2s ease-out;
 }
 
-@keyframes slideIn {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Home description section with animated text */
-.home-description {
-  margin-top: 50px;
-}
-
-.home-description h2 {
+/* Home description section */
+.home-description-title {
   font-size: 2.5em;
   color: #c8d5e2;
   margin-bottom: 20px;
   animation: fadeInText 3s ease-in-out infinite;
 }
 
-.home-description p {
+.home-description-text {
   font-size: 1.2em;
   color: #7f8c8d;
   line-height: 1.6;
@@ -73,8 +82,7 @@
   animation: slideIn 2s ease-out;
 }
 
-/* Explore Courses button with hover effect */
-.btn-hovered {
+.home-description-button {
   background-color: #3498db;
   color: white;
   padding: 12px 30px;
@@ -85,20 +93,11 @@
   animation: buttonHover 1s infinite alternate;
 }
 
-@keyframes buttonHover {
-  0% {
-    background-color: #3498db;
-  }
-  100% {
-    background-color: #2980b9;
-  }
-}
-
-.btn-hovered:hover {
+.home-description-button:hover {
   background-color: #2980b9;
 }
 
-/* Statistics section with animated stats */
+/* Statistics section */
 .home-stats {
   display: flex;
   justify-content: space-evenly;
@@ -118,32 +117,21 @@
   animation: fadeInUp 2s ease-out;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stat-item h3 {
+.stat-item-number {
   font-size: 4em;
   color: #adbac3;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.stat-item p {
+.stat-item-label {
   font-size: 1.2em;
   color: #7f8c8d;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .home-description p {
+  .home-description-text {
     font-size: 1.1em;
   }
 

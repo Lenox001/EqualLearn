@@ -1,6 +1,13 @@
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from .models import Course
+from .models import Course,Enrollment
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
+
+
 
 def course_list(request):
     courses = Course.objects.all()
@@ -25,3 +32,16 @@ def course_detail(request, slug):
         "image": request.build_absolute_uri(course.image.url) if course.image else None  # Get the absolute URL for the image
     }
     return JsonResponse(course_data)
+
+def enroll_in_course(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    
+    # Check if the user is logged in
+    if request.user.is_authenticated:
+        # Create an enrollment record
+        Enrollment.objects.create(user=request.user, course=course)
+        return HttpResponse("Successfully enrolled in the course!")
+    else:
+        return HttpResponse("You need to be logged in to enroll.")
+
+

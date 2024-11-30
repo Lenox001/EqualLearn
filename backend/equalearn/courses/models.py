@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
+from django.conf import settings
 
 class Course(models.Model):
     title = models.CharField(max_length=255)
@@ -15,3 +17,13 @@ class Course(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+class Enrollment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    date_enrolled = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'course')  # Ensures a user can't enroll in the same course twice
+
+    def __str__(self):
+        return f'{self.user.username} enrolled in {self.course.title}'

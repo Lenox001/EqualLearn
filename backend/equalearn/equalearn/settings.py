@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'courses',
      'corsheaders',
+     'users',
+     'rest_framework_simplejwt',
+     'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -125,10 +128,39 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-INSTALLED_APPS += ['rest_framework']
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',  # React app URL
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'users.CustomUser'
+# Add JWT settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+# Configure Simple JWT
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+}
+# settings.py
+
+STATIC_URL = '/static/'
+
+# Add this to define where static files are stored in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# settings.py
+
+# Media files settings
+MEDIA_URL = '/media/'  # URL to access media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Absolute filesystem path to the media directory
+
 

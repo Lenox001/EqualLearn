@@ -4,8 +4,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/courses/', views.course_list, name='course-list'),
-    path('api/courses/<slug:slug>/', views.course_detail, name='course-detail'),
+   
+    path('courses/', views.course_list, name='course-list'),
+    path('courses/<slug:slug>/', views.course_detail, name='course-detail'),
+    path('courses/<slug:slug>/enroll/', views.enroll_in_course, name='enroll-course'),
 ]
 
 # Add media URL pattern when in DEBUG mode
