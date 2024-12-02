@@ -43,6 +43,7 @@ INSTALLED_APPS = [
      'users',
      'rest_framework_simplejwt',
      'rest_framework',
+     'contacts',
 ]
 
 MIDDLEWARE = [
@@ -161,6 +162,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files settings
 MEDIA_URL = '/media/'  # URL to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Absolute filesystem path to the media directory
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Absolute filesystem path to the media directory
 
 

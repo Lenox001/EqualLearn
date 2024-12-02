@@ -1,36 +1,37 @@
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faInfoCircle,
   faBook,
+  faInfoCircle,
   faEnvelope,
   faUserCircle,
-  faQuestionCircle,
+  faSignInAlt,
+  faUserPlus,
   faSignOutAlt,
-  faSignInAlt, // Import Login icon
-  faUserPlus, // Import Signup icon
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContent"; // Import AuthContext
 
 const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, logout } = useContext(AuthContext); // Use authentication state
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setIsAuthenticated(true);
-    }
-  }, []);
+  const handleLogout = () => {
+    logout();
+    navigate("/login"); // Redirect to login page
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand animated-brand" href="/">
+        <Link className="navbar-brand animated-brand" to="/">
           EquaLearn
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -45,19 +46,19 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link" to="/">
                 <FontAwesomeIcon icon={faHome} /> Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/courses">
+              <Link className="nav-link" to="/courses">
                 <FontAwesomeIcon icon={faBook} /> Courses
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <Link className="nav-link" to="/about">
                 <FontAwesomeIcon icon={faInfoCircle} /> About
-              </a>
+              </Link>
             </li>
 
             {isAuthenticated ? (
@@ -72,47 +73,41 @@ const Navbar = () => {
                 >
                   <FontAwesomeIcon icon={faUserCircle} /> Account
                 </a>
-                <ul
-                  className="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="accountDropdown"
-                >
+                <ul className="dropdown-menu dropdown-menu-end">
                   <li>
-                    <a className="dropdown-item" href="/profile">
+                    <Link className="dropdown-item" to="/profile">
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/faqs">
-                      FAQs <FontAwesomeIcon icon={faQuestionCircle} />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/logout">
+                    <button
+                      className="dropdown-item btn btn-link"
+                      onClick={handleLogout}
+                    >
                       Logout <FontAwesomeIcon icon={faSignOutAlt} />
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </li>
             ) : (
-              <li className="nav-item">
-                <a className="nav-link" href="/login">
-                  <FontAwesomeIcon icon={faSignInAlt} /> Login
-                </a>
-              </li>
-            )}
-
-            {!isAuthenticated && (
-              <li className="nav-item">
-                <a className="nav-link" href="/signup">
-                  <FontAwesomeIcon icon={faUserPlus} /> Signup
-                </a>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    <FontAwesomeIcon icon={faSignInAlt} /> Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">
+                    <FontAwesomeIcon icon={faUserPlus} /> Signup
+                  </Link>
+                </li>
+              </>
             )}
 
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <Link className="nav-link" to="/contact">
                 <FontAwesomeIcon icon={faEnvelope} /> Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

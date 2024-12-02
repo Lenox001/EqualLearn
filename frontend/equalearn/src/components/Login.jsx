@@ -1,29 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
-import "../styles/Login.css"; // Import the unique styles for this component
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContent";
+import "../styles/Login.css";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { login } = useContext(AuthContext); // Access login from context
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:8000/api/users/token/",
-        {
-          username,
-          password,
-        }
+        { username, password }
       );
-      localStorage.setItem("access_token", response.data.access_token);
+      const token = response.data.access_token;
+      login(token); // Update context and localStorage
       setMessage("Login successful!");
-      navigate("/"); // Redirect to home page after login
+      navigate("/"); // Redirect to home
     } catch (error) {
       setMessage("Invalid credentials, please try again.");
     }

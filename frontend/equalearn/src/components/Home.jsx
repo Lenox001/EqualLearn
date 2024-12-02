@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <div className="home-page container">
       <header className="home-header text-center">
-        <h1 className="home-header-title">Welcome to EqualEarn</h1>
+        <h1 className="home-header-title">Welcome to EquaLearn</h1>
         <p className="home-header-subtitle">
           Your go-to platform for learning new skills and advancing your career.
         </p>

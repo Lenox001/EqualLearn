@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin interface URL
     path('api/users/', include('users.urls')),  # Include user app URLs
-    path('api/', include('courses.urls')),  # Include courses app URLs
+    path('api/', include('courses.urls')), 
+    path('api/contact/',include ('contacts.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
